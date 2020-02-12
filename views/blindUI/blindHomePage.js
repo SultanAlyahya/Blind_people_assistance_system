@@ -12,10 +12,12 @@ export default class blindHomePage extends React.Component{
                 onPress={()=> this.props.navigation.navigate('CurrencyP')}>
                     <Text style={styles.text}>الكشف عن عمله</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttons}>
+                <TouchableOpacity style={styles.buttons}
+                onPress={()=> this.props.navigation.navigate('voiceP')}>
                     <Text style={styles.text}>قراءة نص</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttons}>
+                <TouchableOpacity style={styles.buttons}
+                onPress={()=> this.props.navigation.navigate('objectP')}>
                     <Text style={styles.text}>الكشف عن مجسم</Text>
                 </TouchableOpacity>
             </View>

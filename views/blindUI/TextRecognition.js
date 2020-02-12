@@ -5,11 +5,10 @@ import styles from './style'
 
 
 
-
 //the { navigation } attribute is because we are using function not class
 //and note that without it you can't access the navigation 
 //and because of it the navigation syntax become navigation.navigate('page')
-export default function currency({ navigation }) {
+export default function voice({ navigation }) {
   //this is how you can use state in functions [attribute, setAttribute=you use it to change the value of attribute ] = useSatet(initial value)
   //and you can change the attribute value by writing setValue(newValue) and the attribute value will change
   //and note that you can access the attribute just by writing attribute anywhere
@@ -38,7 +37,7 @@ export default function currency({ navigation }) {
     const image= await this.camera.takePictureAsync()
     //the return value is a uri and the image is saved in the mobile cash
     //you can access it from the <Image> </Image> by providing the returned uri, width and height
-    navigation.navigate('imageP', {imagePath:image.uri})
+    
     }catch(error){
       console.log(error.message)
     }
@@ -53,7 +52,7 @@ export default function currency({ navigation }) {
       }}>
         <View style={styles.container}>
           <TouchableOpacity style={styles.CameraButton} onPress={()=>  takePicture()}>
-          <Text style={styles.CameraText}>قم بالضغط على الشاشة لاخذ صوره للعمله</Text>
+          <Text style={styles.CameraText}>قم بالضغط على الشاشة لقراءة النص</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flipButton}
