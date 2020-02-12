@@ -3,13 +3,14 @@ import { View, Text } from 'react-native';
 import { createAppContainer, } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Carrency from './views/blindUI/Carrency'
+import currency from './views/blindUI/currency'
 import decide from './views/decide'
 import blindHomePage from './views/blindUI/blindHomePage'
 import volunteerHomePage from './views/volunteerUI/volunteerHomePage'
 import login from './views/volunteerUI/login'
 import signup from './views/volunteerUI/signup'
 import createAccountB from './views/blindUI/createAccountB'
+import image from './views/blindUI/displayImage'
 
 class HomeScreen extends React.Component {
   render() {
@@ -40,9 +41,12 @@ const AppNavigator = createStackNavigator({
   createAccountBP:{
     screen: createAccountB,
   },
-  CarrencyP:{
-    screen: Carrency
-  }
+  CurrencyP:{
+    screen: currency
+  },
+  imageP:{
+    screen: image
+  },
 });
 
 export default createAppContainer(AppNavigator);

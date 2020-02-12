@@ -9,7 +9,7 @@ export default class blindHomePage extends React.Component{
                     <Text style={styles.text}>اتصل بمتطوع</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}
-                onPress={()=> this.props.navigation.navigate('CarrencyP')}>
+                onPress={()=> this.props.navigation.navigate('CurrencyP')}>
                     <Text style={styles.text}>الكشف عن عمله</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}>
