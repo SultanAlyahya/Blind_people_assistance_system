@@ -12,8 +12,26 @@ export default class login extends React.Component{
             data:''
         };
       }
+
+      //the function is async becuase in this function there will be a data the will get sometime to come like get data from server
     savelogin= async(name, phoneNumber)=>{
-        //saveUserdata(login)
+        //ths fetch function is a way to get or send info to/from the server 
+        // write "await" before the variable value because the data for this variable will take sometime to come
+        //the "method" for the fetch is to till the server what to do
+        //1-method "GET" this method get no data in the body it's just used to get data like "get statistics"
+        //2-method "POST" we use this method to send data to server like send new user info or send email and password to check or....
+        //3-method "DELETE" this method is for tilling the server take that info we send and delete tha match
+        //4-method "PATCH" this method is for tilling the server take that info we send and modify tha match
+        //note that you can send info with all the methods except GET
+
+        //you can send data with header and body but it's better to send the data in the body because anyone can see the data in the header
+
+        //mostly the header is used to send the token to the server
+        //the token is used to know who send the request and if he is authorized or not
+
+        // the "JSON.stringify" in the body is for make the data in String format because you cant send anything but String in HTTP request
+
+        //note that our domain name is https://assistance-system-back-end.herokuapp.com 
         const res = await fetch('https://assistance-system-back-end.herokuapp.com/User', {
             method: 'POST',
             headers: {
