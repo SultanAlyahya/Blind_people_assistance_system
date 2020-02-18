@@ -75,7 +75,7 @@ export default class creatAccountB extends React.Component{
                     placeholder=' password'
                     secureTextEntry={true}
                     ></TextInput>
-                    <Text>{this.state.errorPass}</Text>
+                    <Text style={styles.errorMessage}>{this.state.errorPass}</Text>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
                      onPress={()=> this.savelogin(this.state.email, this.state.password)} 

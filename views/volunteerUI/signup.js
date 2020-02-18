@@ -3,6 +3,44 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Settings, Im
 import loginData from '../db/Userdb'
 
 export default class sginup extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            name:'',
+            email:'',
+            password:''
+        }
+    }
+   craeteUser = async(name,email,password)=>{
+        console.log(name,email, password)
+        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User/signup', {
+            method: 'POST',
+            headers: {
+                "Accept": 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                name:name,
+                email: email,
+                password: password,
+              }),
+        })
+        // if(res.status !== 200){
+        //     this.setState({
+        //         errorLogin:'البريد الإلكتروني/ الرقم السري غير صحيح'
+        //     })
+        // }
+        // else{
+        //     this.setState({
+        //         errorLogin:''
+        //     })
+         
+        const resJ = await res.json()
+        
+        console.log(resJ,`status code: ${res.status}`)
+        }
+
+
     render(){
         return(
             <ImageBackground source={require('../../images/loginBackground.jpg')}
@@ -11,11 +49,14 @@ export default class sginup extends React.Component{
                     <Text style={styles.header}>sginup</Text>
                     <TextInput style={styles.userName}
                     placeholder='  Username'
+                    onChangeText={(text)=>this.setState({name: text})}
                     ></TextInput>
                     <TextInput style={styles.userName}
+                     onChangeText={(text)=>this.setState({email: text})}
                     placeholder='  Email'
                     ></TextInput>
                     <TextInput style={styles.userName}
+                     onChangeText={(text)=>this.setState({password: text})}
                     placeholder='  Password'
                     secureTextEntry={true}
                     ></TextInput>
@@ -25,12 +66,13 @@ export default class sginup extends React.Component{
                     ></TextInput>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
-                    onPress={()=> this.props.navigation.navigate('volunteerHomePageP')}>
+                    onPress={()=>this.craeteUser(this.state.name, this.state.email,this.state.password)}>
                         <Text style={styles.loginText}>Create Account</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </ImageBackground>
+            // this. props.navigation.navigate('volunteerHomePageP'
         )
     }
 }
