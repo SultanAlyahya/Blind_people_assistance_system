@@ -7,14 +7,14 @@ export default class login extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            Username:'',
+            email:'',
             Password:'',
             data:''
         };
       }
 
       //the function is async becuase in this function there will be a data the will get sometime to come like get data from server
-    savelogin= async(name, phoneNumber)=>{
+    savelogin= async(email, password)=>{
         //ths fetch function is a way to get or send info to/from the server 
         // write "await" before the variable value because the data for this variable will take sometime to come
         //the "method" for the fetch is to till the server what to do
@@ -32,18 +32,20 @@ export default class login extends React.Component{
         // the "JSON.stringify" in the body is for make the data in String format because you cant send anything but String in HTTP request
 
         //note that our domain name is https://assistance-system-back-end.herokuapp.com 
-        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User', {
+        console.log(email, password)
+        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User/Login', {
             method: 'POST',
             headers: {
-                Accept: 'application/json',
+                "Accept": 'application/json',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                name: name,
-                phoneNumber: phoneNumber,
+                email: email,
+                password: password,
               }),
         })
         const resJ = await res.json()
+        
         console.log(resJ)
     }
     retrievelogin=async()=>{
@@ -58,7 +60,7 @@ export default class login extends React.Component{
                  <View style={styles.whitebackground}>
                     <Text style={styles.header}>login</Text>
                     <TextInput style={styles.userName}
-                    onChangeText={(text) => this.setState({Username: text})}
+                    onChangeText={(text) => this.setState({email: text})}
                     placeholder='  Username'
                     ></TextInput>
                     <TextInput style={styles.userName}
@@ -68,7 +70,7 @@ export default class login extends React.Component{
                     ></TextInput>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
-                     onPress={()=> this.savelogin(this.state.Username,this.state.Password)}
+                     onPress={()=> this.savelogin(this.state.email,this.state.Password)}
                         //this.props.navigation.navigate('volunteerHomePageP')
                        
                     >
