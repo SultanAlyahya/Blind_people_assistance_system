@@ -54,7 +54,7 @@ export default function cam({ navigation }) {
       }}>
         <View style={styles.container}>
           <TouchableOpacity style={styles.CameraButton} onPress={()=>  takePicture()}>
-          <Text style={styles.CameraText}>قم بالضغط على الشاشة لقراءة النص</Text>
+          <Text style={styles.CameraText}>قم بالضغط على الشاشة لإلتقاط صورة</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.flipButton}
