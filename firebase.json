@@ -9,6 +9,6 @@
    
    
       "ml_vision_label_model": false,
-      "ml_vision_image_label_model": false,
-    },
+      "ml_vision_image_label_model": false
+    }
   }
