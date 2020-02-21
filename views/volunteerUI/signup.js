@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Settings, Image, TextInput} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground,TextInput} from 'react-native';
 import loginData from '../db/Userdb'
 
 export default class sginup extends React.Component{

@@ -13,6 +13,7 @@ import createAccountB from './views/blindUI/createAccountB'
 import image from './views/blindUI/displayImage'
 import voice from './views/blindUI/TextRecognition'
 import object from './views/blindUI/ObjectRecognition'
+import cam from './views/blindUI/cam'
 
 class HomeScreen extends React.Component {
   render() {
@@ -54,6 +55,9 @@ const AppNavigator = createStackNavigator({
   },
   objectP:{
     screen: object
+  },
+  CameraP:{
+    screen: cam
   },
 });
 
