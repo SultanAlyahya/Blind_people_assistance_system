@@ -74,6 +74,7 @@ export default class login extends React.Component{
             this.setState({
                 errorLogin:''
             })
+            this.props.navigation.navigate('volunteerHomePageP')
         }
         const resJ = await res.json()
         

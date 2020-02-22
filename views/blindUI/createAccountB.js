@@ -49,9 +49,12 @@ export default class creatAccountB extends React.Component{
             this.setState({
                 errorLogin:''
             })
+            this.props.navigation.navigate('blindHomePageP')
         }
         const resJ = await res.json()
         console.log(resJ)
+        
+       //console.log(res.body.)
     }
     retrievelogin=async()=>{
         const data = await retrieveData()
