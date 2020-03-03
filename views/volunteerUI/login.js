@@ -48,6 +48,7 @@ export default class login extends React.Component{
         
         console.log(resJ)
     }
+    
     retrievelogin=async()=>{
         const data = await retrieveData()
         console.log(data.name)

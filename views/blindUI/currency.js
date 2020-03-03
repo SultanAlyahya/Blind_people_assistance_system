@@ -35,10 +35,10 @@ export default function currency({ navigation }) {
   const takePicture=async()=>{
     try{
     //this method is for taking pictures
-    const image= await this.camera.takePictureAsync()
+    const image= await this.camera.takePictureAsync({base64:true})
     //the return value is a uri and the image is saved in the mobile cash
     //you can access it from the <Image> </Image> by providing the returned uri, width and height
-    navigation.navigate('imageP', {imagePath:image.uri})
+    navigation.navigate('imageP', {imagePath:image.uri, base64:image.base64,image:image})
     }catch(error){
       console.log(error.message)
     }

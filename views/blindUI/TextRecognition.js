@@ -14,6 +14,7 @@ export default function voice({ navigation }) {
   //and note that you can access the attribute just by writing attribute anywhere
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const [uri, setUri] = useState("")
   var camera=null
   useEffect(() => {
     (async () => {
@@ -29,19 +30,77 @@ export default function voice({ navigation }) {
     return <Text>No access to camera</Text>;
   }
 
-
+  const a=()=>{
+    
+  }
 
   const takePicture=async()=>{
     try{
     //this method is for taking pictures
-    const image= await this.camera.takePictureAsync()
+    const image= await this.camera.takePictureAsync({base64:true})
     //the return value is a uri and the image is saved in the mobile cash
     //you can access it from the <Image> </Image> by providing the returned uri, width and height
-    
+    //console.log(image.base64)
+    OCR(image)
     }catch(error){
       console.log(error.message)
     }
   }
+
+  const OCR=async(image)=>{
+    const data = new FormData();
+          console.log('in')
+            data.append("form", {
+              name: "image.jpeg",
+              type: "image/jpeg",
+              uri:
+                Platform.OS === "android" ? image.uri : image.uri.replace("file://", "")
+            });
+            try{
+            const res = await fetch("https://assistance-system-back-end.herokuapp.com/User/image", {
+              method: 'POST',
+              headers: {
+                "Accept": 'application/json',
+                'Content-Type': 'image/jpeg',
+              },
+                body: data,
+          })
+          const resJ = await res.text()
+          alert(resJ)
+          console.log(resJ)
+        }catch(error){
+          console.log(error)
+        }
+
+  }
+  // const OCR=async(image)=>{
+  //   console.log('in')
+  //   const data = new FormData();
+          
+  //           data.append("form", {
+  //             name: "image.jpeg",
+  //             type: "image/jpeg",
+  //             uri:
+  //               Platform.OS === "android" ? image.uri : image.uri.replace("file://", "")
+  //           });
+  //           try{
+  //           const res = await fetch("https://microsoft-azure-microsoft-computer-vision-v1.p.rapidapi.com/ocr", {
+  //             method: 'POST',
+  //             headers: {
+  //               'x-rapidapi-host': 'microsoft-azure-microsoft-computer-vision-v1.p.rapidapi.com',
+  //               'x-rapidapi-key': 'cd030e1ea2msh070cf39ee790c48p13b720jsnf874d7a09567',
+  //               'Content-Type': 'application/x-www-form-urlencoded'
+  //             },
+  //               body: data,
+  //         })
+  //         const resJ = await res.json()
+  //         alert(resJ.regions[0].lines[0].words[0].text)
+  //         console.log(resJ.regions[0].lines[0].words[0].text)
+  //       }catch(error){
+  //         console.log(error)
+  //       }
+
+  // }
   
   return (
     <View style={{flex:1}}>
