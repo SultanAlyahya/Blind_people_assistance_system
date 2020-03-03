@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Settings, Image} from 'react-native';
+import { View, Text, StyleSheet} from 'react-native';
 import { createAppContainer, } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+// import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import settings from './volunteerSettings'

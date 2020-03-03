@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,ImageBackground,Text,TextInput,TouchableOpacity,StyleSheet,Image,backgroundColor,AsyncStorage} from 'react-native';
+import {AsyncStorage} from 'react-native';
 
 export const saveUserdata = async(loginData)=>{
     await AsyncStorage.setItem('login',JSON.stringify(loginData));

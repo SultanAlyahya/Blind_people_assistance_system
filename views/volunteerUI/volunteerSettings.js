@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Settings,FlatList} from 'react-native';
+import { View, Text, StyleSheet, FlatList} from 'react-native';
 import SettingsLine from '../reusableComponents/settingsLine'
 
 export default class volunteerHomePage extends React.Component{

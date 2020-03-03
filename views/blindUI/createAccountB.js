@@ -7,26 +7,54 @@ export default class creatAccountB extends React.Component{
     constructor(props) {
         super(props);
         this.state = { 
-            name:'',
-            phoneNumber:'',
-            data:''
+            email:'',
+            password:'',
+            data:'',
+            errorEmail: '',
+            errorPass:'',
+            errorLogin:''
         };
       }
-    savelogin= async(name, phoneNumber)=>{
+    savelogin= async(email, password)=>{
         //saveUserdata(login)
-        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User', {
+        if(email === ''){
+            this.setState({
+                errorEmail:'الرجاء ادخال البريد الالكتروني'
+            })
+        }else{
+            this.setState({errorEmail:''})
+        }
+        if(password ===''){
+          this.setState({
+            errorPass: 'الرجاء ادخال الرقم السري'
+          })  
+        }else{
+            this.setState({errorPass:''})}
+        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                name: name,
-                phoneNumber: phoneNumber,
+                email: email,
+                password: password,
               }),
         })
+        if(res.status !== 200){
+            this.setState({
+                errorLogin:'البريد الإلكتروني/ الرقم السري غير صحيح'
+            })
+        }else{
+            this.setState({
+                errorLogin:''
+            })
+            this.props.navigation.navigate('blindHomePageP')
+        }
         const resJ = await res.json()
         console.log(resJ)
+        
+       //console.log(res.body.)
     }
     retrievelogin=async()=>{
         const data = await retrieveData()
@@ -39,18 +67,21 @@ export default class creatAccountB extends React.Component{
              style={styles.container}>
                  <View style={styles.whitebackground}>
                     <Text style={styles.header}>login</Text>
+        <Text style= {styles.errorMessage} >{this.state.errorLogin}</Text>
                     <TextInput style={styles.userName}
-                    onChangeText={(text) => this.setState({name: text})}
-                    placeholder='  Name'
+                    onChangeText={(text) => this.setState({email: text})}
+                    placeholder='  Email'
                     ></TextInput>
+                    <Text style ={styles.errorMessage}>{this.state.errorEmail}</Text>
                     <TextInput style={styles.userName}
-                    onChangeText={(text) => this.setState({phoneNumber: text})}
-                    placeholder='  Phone number'
+                    onChangeText={(text) => this.setState({password: text})}
+                    placeholder=' password'
                     secureTextEntry={true}
                     ></TextInput>
+                    <Text style={styles.errorMessage}>{this.state.errorPass}</Text>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
-                     onPress={()=> this.props.navigation.navigate('blindHomePageP')} 
+                     onPress={()=> this.savelogin(this.state.email, this.state.password)} 
                     >
                         <Text style={styles.loginText}>تسجيل دخول</Text>
                         </TouchableOpacity>
@@ -120,5 +151,9 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         backgroundColor:'white',
         borderRadius:20
+    },
+    errorMessage:{
+        color:'red',
+        
     }
 })

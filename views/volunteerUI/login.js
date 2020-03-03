@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Settings, Image, TextInput} from 'react-native';
+import { View,Text, StyleSheet, TouchableOpacity, ImageBackground, Settings, Image, TextInput} from 'react-native';
 import {saveUserdata, retrieveData} from '../db/Userdb'
-
+// import {Text} from '@material-ui/core'
 
 export default class login extends React.Component{
     constructor(props) {
@@ -9,7 +9,10 @@ export default class login extends React.Component{
         this.state = { 
             email:'',
             Password:'',
-            data:''
+            data:'',
+            errorEmail:'',
+            errorPass:'',
+            errorLogin:''
         };
       }
 
@@ -32,6 +35,24 @@ export default class login extends React.Component{
         // the "JSON.stringify" in the body is for make the data in String format because you cant send anything but String in HTTP request
 
         //note that our domain name is https://assistance-system-back-end.herokuapp.com 
+        if(email === ''){
+            this.setState({
+                errorEmail: 'الرجاء ادخال البريد الالكتروني' 
+            })}else{
+                this.setState({
+                    errorEmail:''
+                })
+            }
+            if(password === ''){
+                this.setState({
+                    errorPass: 'الرجاء ادخال الرقم السري' 
+                })}else{
+                    this.setState({
+                        errorPass: ''
+                    })
+                }
+            
+        console.log('here',this.state.errorEmail, this.state.errorPass)
         console.log(email, password)
         const res = await fetch('https://assistance-system-back-end.herokuapp.com/User/Login', {
             method: 'POST',
@@ -44,6 +65,17 @@ export default class login extends React.Component{
                 password: password,
               }),
         })
+        if(res.status !== 200){
+            this.setState({
+                errorLogin:'البريد الإلكتروني/ الرقم السري غير صحيح'
+            })
+        }
+        else{
+            this.setState({
+                errorLogin:''
+            })
+            this.props.navigation.navigate('volunteerHomePageP')
+        }
         const resJ = await res.json()
         
         console.log(resJ)
@@ -60,15 +92,19 @@ export default class login extends React.Component{
              style={styles.container}>
                  <View style={styles.whitebackground}>
                     <Text style={styles.header}>login</Text>
+        <Text style={styles.errorMessage}>{this.state.errorLogin}</Text>
                     <TextInput style={styles.userName}
                     onChangeText={(text) => this.setState({email: text})}
                     placeholder='  Username'
+                     
                     ></TextInput>
+                    <Text style={styles.errorMessage}>{this.state.errorEmail}</Text>
                     <TextInput style={styles.userName}
                     onChangeText={(text) => this.setState({Password: text})}
                     placeholder='  Password'
                     secureTextEntry={true}
                     ></TextInput>
+                    <Text style={styles.errorMessage}>{this.state.errorPass}</Text>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
                      onPress={()=> this.savelogin(this.state.email,this.state.Password)}
@@ -84,6 +120,7 @@ export default class login extends React.Component{
             </ImageBackground>
         )
     }
+    
 }
 
 const styles = StyleSheet.create({
@@ -140,5 +177,9 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         backgroundColor:'white',
         borderRadius:20
+    },
+    errorMessage:{
+        color:'red',
+        
     }
 })
