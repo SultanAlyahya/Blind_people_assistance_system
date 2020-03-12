@@ -9,7 +9,7 @@ export default class blindHomePage extends React.Component{
                     <Text style={styles.text}>اتصل بمتطوع</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}
-                onPress={()=> this.props.navigation.navigate('CurrencyP')}>
+                onPress={()=> this.props.navigation.navigate('CameraP')}>
                     <Text style={styles.text}>الكشف عن عمله</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}
@@ -17,7 +17,7 @@ export default class blindHomePage extends React.Component{
                     <Text style={styles.text}>قراءة نص</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}
-                onPress={()=> this.props.navigation.navigate('objectP')}>
+                onPress={()=> this.props.navigation.navigate('CameraP')}>
                     <Text style={styles.text}>الكشف عن مجسم</Text>
                 </TouchableOpacity>
             </View>
