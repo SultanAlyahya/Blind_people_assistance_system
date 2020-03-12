@@ -17,6 +17,7 @@ import Constants from 'expo-constants'
 import * as Permissions from 'expo-permissions'
 
 export  default class object  extends React.Component {
+  
   state = {
     isTfReady: false,
     isModelReady: false,

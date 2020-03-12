@@ -12,8 +12,7 @@ import { fetch } from '@tensorflow/tfjs-react-native'
 import * as ImagePicker from 'expo-image-picker'
 
 export default class currency extends React.Component{
-  constructor(props) {
-    super(props);
+  
   state = {
     isTfReady: false,
     isModelReady: false,
@@ -21,7 +20,7 @@ export default class currency extends React.Component{
     image: {uri:this.props.navigation.state.params.imagePath} ,
     imageURI:this.props.navigation.state.params.imagePath 
   }
-  }
+
   async componentDidMount() {
     await tf.ready()
     this.setState({
