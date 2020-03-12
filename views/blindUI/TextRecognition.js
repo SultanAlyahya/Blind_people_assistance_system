@@ -37,7 +37,7 @@ export default function voice({ navigation }) {
   const takePicture=async()=>{
     try{
     //this method is for taking pictures
-    const image= await this.camera.takePictureAsync({base64:true})
+    const image= await this.camera.takePictureAsync({quality:0.5})
     //the return value is a uri and the image is saved in the mobile cash
     //you can access it from the <Image> </Image> by providing the returned uri, width and height
     //console.log(image.base64)

@@ -54,7 +54,7 @@ export default class login extends React.Component{
             
         console.log('here',this.state.errorEmail, this.state.errorPass)
         console.log(email, password)
-        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User/Login', {
+        const res = await fetch('http://localhost:3000/volunteer/Login', {
             method: 'POST',
             headers: {
                 "Accept": 'application/json',
@@ -74,11 +74,12 @@ export default class login extends React.Component{
             this.setState({
                 errorLogin:''
             })
-            this.props.navigation.navigate('volunteerHomePageP')
-        }
-        const resJ = await res.json()
+            const resJ = await res.json()
         
-        console.log(resJ)
+        console.log(resJ.token)
+            this.props.navigation.navigate('volunteerHomePageP', {token: resJ.token})
+        }
+        
     }
     
     retrievelogin=async()=>{

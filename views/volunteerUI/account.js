@@ -6,7 +6,7 @@ export default class volunteerHomePage extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            token:this.props.navigation.state.params.token || true,
+            token:this.props.navigation.state.params.token,
            
         }
     }
@@ -19,14 +19,9 @@ export default class volunteerHomePage extends React.Component{
         return(
             <View style={styles.Scontainer}>
                 <View style={styles.header}>
-                    <Text style={styles.textHeader}>Hello User</Text>
+                    <Text style={styles.textHeader}>User name</Text>
                 </View>
-                <FlatList
-                    data={settings}
-                    renderItem={({ item }) =>  <SettingsLine title={item.title}/>}
-                    keyExtractor={item => item.id}
-                />
-
+                
                 <TouchableOpacity
                 onPress={()=>a()}>
                     <Text>token</Text>
