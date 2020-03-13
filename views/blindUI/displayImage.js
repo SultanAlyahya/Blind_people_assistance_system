@@ -8,9 +8,7 @@ export default class image extends React.Component{
             uri: this.props.navigation.state.params.imagePath || 'yes',
             fileName: 'hello.jpg',
             type: 'image/jpeg',
-            photo:{uri:this.props.navigation.state.params.imagePath, fileName:'image.jpg', type: 'image/jpeg',},
-            base64:this.props.navigation.state.params.base64,
-            image:this.props.navigation.state.params.image
+            photo:{uri:this.props.navigation.state.params.imagePath, fileName:'image.jpg', type: 'image/jpeg',}
         };
       }
 
@@ -49,37 +47,12 @@ export default class image extends React.Component{
               const Data = await dataJ
               console.log(Data)
         }
-        const imageToText=async()=>{
-          var formData = new FormData();
-            //formData.append("base64Image", "data:image/png;base64,"+this.state.base64);
-            formData.append("url", "https://upload.wikimedia.org/wikipedia/commons/a/a2/Hello_%28yellow%29.png");
-            formData.append("language"   , "eng");
-            formData.append("apikey"  , "522a8c696488957");
-            formData.append("isOverlayRequired", "True");
-            formData.append("filetype", "png")
-            console.log('in')
-  
-          const res = await fetch('https://api.ocr.space/parse/image', {
-              method: 'POST',
-              headers: {
-                "Accept": 'application/json',
-                'Content-Type': 'image/png',
-              },
-                body: formData,
-          })
-          console.log('in2')
-          const resJ = await res.json()
-          console.log('in3')
-          console.log(resJ.ParsedResults[0].ParsedText)
-          //console.log(this.state.image)
-          alert(resJ.ParsedResults[0].ParsedText)
-      }
         return(
             <View>
          <Image 
          style={{width: '50%', height: '50%'}}
          source={{uri:(this.props.navigation.state.params.imagePath).replace("file://","")}} />
-         <TouchableOpacity onPress={()=> imageToText()}>
+         <TouchableOpacity onPress={()=> a()}>
          <Text>click</Text>
          </TouchableOpacity>
          </View>
