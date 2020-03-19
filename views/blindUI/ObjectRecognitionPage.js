@@ -19,7 +19,7 @@ export  default class object  extends React.Component {
                 predictions: null,
                 image: {uri:this.props.navigation.state.params.imagePath},
                 updates:'',
-                predictions:null
+                imageClassified:false
               }
 
               async componentDidMount() {
@@ -36,8 +36,7 @@ export  default class object  extends React.Component {
                     this.setState({isModelReady:true})
                     this.setState({updates:'جاري  معالجة الصورة'})
                     const predictions = await classifyImage(this.state.image)
-                    this.setState({updates:'تمت المعالجة بنجاح'})
-                    this.setState({predictions:predictions})
+                    this.setState({updates:'تمت المعالجة بنجاح', imageClassified: true, predictions: predictions})
                     Speech.speak(this.state.predictions[0].className)
                     clearInterval(this.checkIfReady);
                 }
@@ -65,16 +64,16 @@ render() {
                 <Text>{this.state.updates}</Text>
            </View>
            <View style={styles.imageContainer}>
-               <TouchableOpacity style={this.state.isModelReady? styles.buttons:styles.blockedButtons}
-               onPress={()=> this.replayTheVoice()}>
+               <TouchableOpacity style={this.state.imageClassified? styles.buttons:styles.blockedButtons}
+               onPress={()=> this.state.imageClassified? this.replayTheVoice(): undefined}>
                     <Text style={styles.text}>اعادة العرض  الصوتي</Text>
                </TouchableOpacity>
-               <TouchableOpacity style={this.state.isModelReady? styles.buttons:styles.blockedButtons}
-               onPress={()=> this.displayAllTheOdds()}>
+               <TouchableOpacity style={this.state.imageClassified? styles.buttons:styles.blockedButtons}
+               onPress={()=> this.state.imageClassified? this.displayAllTheOdds(): undefined}>
                     <Text style={styles.text}>عرض كل الاحتمالات</Text>
                </TouchableOpacity>
-               <TouchableOpacity style={styles.buttons}
-               onPress={()=> this.props.navigation.goBack()}>
+               <TouchableOpacity style={this.state.imageClassified? styles.buttons:styles.blockedButtons}
+               onPress={()=> this.state.imageClassified? this.props.navigation.goBack(): undefined}>
                     <Text style={styles.text}>اخذ صورة اخرى</Text>
                </TouchableOpacity>
            </View>
