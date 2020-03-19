@@ -12,7 +12,7 @@ export default class blindHomePage extends React.Component{
     async componentDidMount() {
         try{
             if(!isModelReady){
-                const ready = await getReady()
+               //await getReady()
             }
             console.log(true)
         }catch(error){
@@ -31,7 +31,7 @@ export default class blindHomePage extends React.Component{
                     <Text style={styles.text}>الكشف عن عمله</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}
-                onPress={()=> this.props.navigation.navigate('voiceP')}>
+                onPress={()=> this.props.navigation.navigate('TextP')}>
                     <Text style={styles.text}>قراءة نص</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttons}

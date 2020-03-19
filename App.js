@@ -11,9 +11,10 @@ import login from './views/volunteerUI/login'
 import signup from './views/volunteerUI/signup'
 import createAccountB from './views/blindUI/createAccountB'
 import image from './views/blindUI/displayImage'
-import voice from './views/blindUI/TextRecognition'
+import TextRecognitionCamera from './views/blindUI/TextRecognitionCamera'
 import object from './views/blindUI/ObjectRecognitionPage'
 import cam from './views/blindUI/cam'
+import textPage from './views/blindUI/textRecognition'
 
 class HomeScreen extends React.Component {
   render() {
@@ -50,14 +51,17 @@ const AppNavigator = createStackNavigator({
   imageP:{
     screen: image
   },
-  voiceP:{
-    screen: voice
+  TextP:{
+    screen: TextRecognitionCamera
   },
   objectP:{
     screen: object
   },
   CameraP:{
     screen: cam
+  },
+  textPageP:{
+    screen: textPage
   },
 });
 

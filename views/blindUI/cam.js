@@ -143,19 +143,7 @@ export default class cam extends React.Component{
   
 
   render(){
-    var i=0
-    // var re=setInterval(()=>{
-    //   if(i > 500 ){
-    //     //clearInterval(re)
-    //   }
-    //   else if(state.isModelReady){
-    //     this.setState({isModelReady:true})
-    //     clearInterval(re)
-    //   }
-    //   i++
-    // },500)
-
-    
+   
     const { hasPermission } = this.state
     if (hasPermission === null) {
       return <View />;

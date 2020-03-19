@@ -11,7 +11,8 @@ const color6= '#53A4FF'
 export default StyleSheet.create({
 
     Camera:{
-        flex:1
+      height:'85%',
+      width:'100%'
         },
         flipButton:{
           height:'10%',
@@ -44,5 +45,22 @@ export default StyleSheet.create({
           height:'90%',
           width:'100%'
         },
+        languageEN:{
+          height:'15%',
+          width:'100%',
+          backgroundColor:'blue',
+          justifyContent:'center',
+          alignItems:'center'
+        },
+        languageAR:{
+          height:'15%',
+          width:'100%',
+          backgroundColor:'green',
+          justifyContent:'center',
+          alignItems:'center'
+        },
+        languageText:{
+          fontSize:30
+        }
       }
 )
