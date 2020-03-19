@@ -12,7 +12,7 @@ import signup from './views/volunteerUI/signup'
 import createAccountB from './views/blindUI/createAccountB'
 import image from './views/blindUI/displayImage'
 import voice from './views/blindUI/TextRecognition'
-import object from './views/blindUI/ObjectRecognition'
+import object from './views/blindUI/ObjectRecognitionPage'
 import cam from './views/blindUI/cam'
 
 class HomeScreen extends React.Component {

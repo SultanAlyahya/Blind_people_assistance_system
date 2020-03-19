@@ -1,7 +1,25 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {isModelReady, getReady} from './ObjectRecognition'
 
 export default class blindHomePage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = { 
+            is:'',
+        };
+      }
+    async componentDidMount() {
+        try{
+            if(!isModelReady){
+                const ready = await getReady()
+            }
+            console.log(true)
+        }catch(error){
+            console.log(error)
+        }
+          }
+          
     render(){
         return(
             <View style={styles.containar}>
