@@ -53,7 +53,7 @@ export default class sginup extends React.Component{
                 errorPas:'',
                 errorName:'',
             })
-        const res = await fetch('https://assistance-system-back-end.herokuapp.com/User/signup', {
+        const res = await fetch('https://assistance-system-back-end.herokuapp.com/volunteer/Signup', {
             method: 'POST',
             headers: {
                 "Accept": 'application/json',
@@ -68,6 +68,7 @@ export default class sginup extends React.Component{
       
          
         const resJ = await res.json()
+        console.log(resJ)
         
         console.log(resJ.error,`status code: ${res.status}`)
         if(res.status !== 201 && resJ.error ==='the email has been used'){

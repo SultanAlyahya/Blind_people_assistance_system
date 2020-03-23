@@ -76,8 +76,14 @@ export default class login extends React.Component{
             })
             const resJ = await res.json()
         
-        console.log(resJ.token)
-            this.props.navigation.navigate('volunteerHomePageP', {token: resJ.token})
+            console.log(resJ.calls)
+        //console.log(res.headers.map.token)
+            this.props.navigation.navigate('volunteerHomePageP', {
+                token: res.headers.map.token,
+                name:resJ.name,
+                calls:resJ.calls,
+                rate:resJ.rate
+            })
         }
         
     }
@@ -108,7 +114,7 @@ export default class login extends React.Component{
                     <Text style={styles.errorMessage}>{this.state.errorPass}</Text>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
-                     onPress={()=> this.savelogin(this.state.email,this.state.Password)}
+                     onPress={()=> this.savelogin(this.state.email, this.state.Password)}
                         //this.props.navigation.navigate('volunteerHomePageP')
                        
                     >

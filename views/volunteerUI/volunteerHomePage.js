@@ -8,21 +8,49 @@ import settings from './volunteerSettings'
 
 
 export class volunteerHomePage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state={
+            token:this.props.navigation.state.params.token || true,
+            name:this.props.navigation.state.params.name || true,
+            calls:this.props.navigation.state.params.calls ,
+            rate:this.props.navigation.state.params.rate,
+            call: 'Enable'
+        }
+    }
+    // async componentDidMount() {
+    //     console.log(this.state.calls)
+    //     console.log(this.state.rate)
+    //     console.log(this.state.token)
+    //       }
     render(){
         return(
             <View style={styles.containar}>
+                <View style={styles.topContainer}>
+
+                </View>
+                <View style={styles.info}>
+                    <Text style={styles.name}>Hello {this.state.name}</Text>
+                </View>
                 <View style={styles.statestic}>
                     <Text style={styles.statesticText}>statestic</Text>
                 </View>
-                <View style={styles.info}>
-                    <Text style={styles.name}>User name</Text>
-                </View>
                 <View style={styles.settings}>
-                    <View style={styles.settingsBox}>
-                        <Text style={styles.name}> how many calls</Text>
+                    <View style={styles.settingsBoxLeft}>
+                        <View style={styles.topText}><Text style={styles.text}> calls received</Text></View>
+                        <View style={styles.buttomText}><Text style={styles.text}>{this.state.calls}</Text></View>
                     </View>
-                    <View style={styles.settingsBox}>
-                        <Text style={styles.name}> Rating</Text>
+                    <View style={styles.settingsBoxRight}>
+                        <View style={styles.topText}><Text style={styles.text}>Rating:</Text></View>
+                        <View style={styles.buttomText}><Text style={styles.text}>{this.state.rate}</Text></View>
+                    </View>
+                    <View style={styles.settingsBoxLeft}>
+                        <View style={styles.topText}><Text style={styles.text}> calls</Text></View>
+                        <View style={this.state.call === 'Enable'? styles.callsEnabel : styles.callsDianabel}><Text style={styles.text}>{this.state.call}</Text></View>
+                    </View>
+                    <View style={styles.settingsBoxRight}>
+                        <View style={styles.topText}><Text style={styles.text}>active volunteers</Text></View>
+                        <View style={styles.buttomText}><Text style={styles.text}>0</Text></View>
                     </View>
                 </View>
             </View>
@@ -56,51 +84,108 @@ const styles = StyleSheet.create({
     containar:{
         flex:1,
         justifyContent:'space-around',
-        padding:'5%',
         backgroundColor:'#D2EDFC',
-        
+        padding:0
     },
     statestic:{
-        height:"30%",
-        borderRadius:20,
-        borderColor:"black",
-        borderWidth:1,
-        backgroundColor:'#3E91FF',
-        margin:"1%",
-        marginBottom:"5%",
+        height:"20%",
+        width:'80%',
+        backgroundColor:'white',
+        margin:"10%",
         justifyContent:'center',
         alignItems:'center',
+        borderColor:'#3d3d3d',
+        borderWidth:1,
+        marginTop:'0%'
     },
-    settingsBox:{
-        width:"48%",
+    settingsBoxLeft:{
+        width:"50%",
         height:"50%",
         borderColor:"black",
-        borderWidth:1,
-        backgroundColor:'#3E91FF',
-        borderRadius:20,
+        borderColor:'#3d3d3d',
+        borderRightWidth:1,
         justifyContent:'center',
         alignItems:'center',
+        borderBottomWidth:1
+        //flexDirection:"row"
+    },
+    settingsBoxRight:{
+        width:"50%",
+        height:"50%",
+        borderColor:"black",
+        borderColor:'#3d3d3d',
+        borderLeftWidth:1,
+        justifyContent:'center',
+        alignItems:'center',
+        borderBottomWidth:1
+        //flexDirection:"row"
     },
     settings:{
         flexDirection:'row',
         flexWrap:'wrap',
         width:"100%",
         height:'45%',
-        padding:"2%",
+        //padding:"2%",
         justifyContent:'space-between',
+        marginTop:'-5%'
     },
     info:{
         height:"10%",
         width:"100%",
         justifyContent:'center',
         alignItems:'center',
+        marginBottom:'-5%',
+        marginTop:'-5%',
+        //backgroundColor:'black'
     },
     name:{
-        fontSize:30,
+        fontSize:50,
         color:'#35363D',
         
     },
+    topText:{
+        
+        width:'100%',
+        height:'70%',
+        borderBottomWidth:1,
+        borderLeftColor:'black',
+        alignItems:"center",
+        justifyContent:'center',
+        //backgroundColor:'#3E91FF'
+    },
+    buttomText:{
+        height:'30%',
+        width:'100%',
+        alignItems:"center",
+        justifyContent:'center',
+        backgroundColor:'#3E91FF'
+    },
+    text:{
+        fontSize:30,
+        color:'#35363D',
+    },
     statesticText:{
         fontSize:50,
+    },
+    callsEnabel:{
+        height:'30%',
+        width:'100%',
+        alignItems:"center",
+        justifyContent:'center',
+        backgroundColor:'#00ff00' 
+    },
+    callsDianabel:{
+        height:'30%',
+        width:'100%',
+        alignItems:"center",
+        justifyContent:'center',
+        backgroundColor:'#ff0000' 
+    },
+    topContainer:{
+        height:'25%',
+        width:'100%',
+        position:"absolute",
+        backgroundColor:'#3E91FF',
+        top:0
     }
 })

@@ -7,7 +7,7 @@ export default class volunteerHomePage extends React.Component{
         super(props);
         this.state={
             token:this.props.navigation.state.params.token || true,
-           
+            name:this.props.navigation.state.params.name || true,
         }
     }
     render(){
@@ -19,7 +19,7 @@ export default class volunteerHomePage extends React.Component{
         return(
             <View style={styles.Scontainer}>
                 <View style={styles.header}>
-                    <Text style={styles.textHeader}>Hello User</Text>
+                    <Text style={styles.textHeader}>Hello {this.state.name}</Text>
                 </View>
                 <FlatList
                     data={settings}
