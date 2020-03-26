@@ -36,19 +36,19 @@ export class volunteerHomePage extends React.Component{
                     <Text style={styles.statesticText}>statestic</Text>
                 </View>
                 <View style={styles.settings}>
-                    <View style={styles.settingsBoxLeft}>
+                    <View style={styles.settingsBox}>
                         <View style={styles.topText}><Text style={styles.text}> calls received</Text></View>
                         <View style={styles.buttomText}><Text style={styles.text}>{this.state.calls}</Text></View>
                     </View>
-                    <View style={styles.settingsBoxRight}>
-                        <View style={styles.topText}><Text style={styles.text}>Rating:</Text></View>
+                    <View style={styles.settingsBox}>
+                        <View style={styles.topText}><Text style={styles.text}>Rating</Text></View>
                         <View style={styles.buttomText}><Text style={styles.text}>{this.state.rate}</Text></View>
                     </View>
-                    <View style={styles.settingsBoxLeft}>
+                    <View style={styles.settingsBox}>
                         <View style={styles.topText}><Text style={styles.text}> calls</Text></View>
-                        <View style={this.state.call === 'Enable'? styles.callsEnabel : styles.callsDianabel}><Text style={styles.text}>{this.state.call}</Text></View>
+                        <View style={this.state.call === 'Enable'? styles.callsEnabel : styles.callsDisabel}><Text style={styles.text}>{this.state.call}</Text></View>
                     </View>
-                    <View style={styles.settingsBoxRight}>
+                    <View style={styles.settingsBox}>
                         <View style={styles.topText}><Text style={styles.text}>active volunteers</Text></View>
                         <View style={styles.buttomText}><Text style={styles.text}>0</Text></View>
                     </View>
@@ -96,38 +96,39 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderColor:'#3d3d3d',
         borderWidth:1,
-        marginTop:'0%'
+        marginTop:0
     },
-    settingsBoxLeft:{
-        width:"50%",
-        height:"50%",
-        borderColor:"black",
-        borderColor:'#3d3d3d',
-        borderRightWidth:1,
+    settingsBox:{
+        width:"46%",
+        height:"46%",
         justifyContent:'center',
         alignItems:'center',
-        borderBottomWidth:1
+        margin:'2%',
+        //paddingBottom:2
         //flexDirection:"row"
     },
     settingsBoxRight:{
-        width:"50%",
+        width:"46%",
         height:"50%",
         borderColor:"black",
         borderColor:'#3d3d3d',
         borderLeftWidth:1,
         justifyContent:'center',
         alignItems:'center',
-        borderBottomWidth:1
+        borderBottomWidth:1,
+        margin:'2%'
         //flexDirection:"row"
     },
     settings:{
         flexDirection:'row',
         flexWrap:'wrap',
         width:"100%",
-        height:'45%',
+        height:'50%',
         //padding:"2%",
         justifyContent:'space-between',
-        marginTop:'-5%'
+        //marginTop:'-5%'
+        //backgroundColor:'black',
+        padding:'1%'
     },
     info:{
         height:"10%",
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         marginBottom:'-5%',
         marginTop:'-5%',
+        
         //backgroundColor:'black'
     },
     name:{
@@ -147,10 +149,17 @@ const styles = StyleSheet.create({
         
         width:'100%',
         height:'70%',
-        borderBottomWidth:1,
+        borderBottomWidth:2,
         borderLeftColor:'black',
         alignItems:"center",
         justifyContent:'center',
+        borderWidth:2,
+        borderColor:'black',
+        borderTopEndRadius:20,
+        borderTopLeftRadius:20,
+        borderTopRightRadius:20,
+        borderTopStartRadius:20,
+        borderBottomWidth:0
         //backgroundColor:'#3E91FF'
     },
     buttomText:{
@@ -158,7 +167,14 @@ const styles = StyleSheet.create({
         width:'100%',
         alignItems:"center",
         justifyContent:'center',
-        backgroundColor:'#3E91FF'
+        backgroundColor:'#3E91FF',
+        borderWidth:2,
+        borderColor:'black',
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
+        borderBottomEndRadius:20,
+        borderBottomStartRadius:20,
+        
     },
     text:{
         fontSize:30,
@@ -172,14 +188,26 @@ const styles = StyleSheet.create({
         width:'100%',
         alignItems:"center",
         justifyContent:'center',
-        backgroundColor:'#00ff00' 
+        backgroundColor:'#00ff00',
+        borderWidth:2,
+        borderColor:'black',
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
+        borderBottomEndRadius:20,
+        borderBottomStartRadius:20,
     },
-    callsDianabel:{
+    callsDisabel:{
         height:'30%',
         width:'100%',
         alignItems:"center",
         justifyContent:'center',
-        backgroundColor:'#ff0000' 
+        backgroundColor:'#ff0000',
+        borderWidth:2,
+        borderColor:'black',
+        borderBottomLeftRadius:20,
+        borderBottomRightRadius:20,
+        borderBottomEndRadius:20,
+        borderBottomStartRadius:20,
     },
     topContainer:{
         height:'25%',

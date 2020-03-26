@@ -60,6 +60,18 @@ export default class creatAccountB extends React.Component{
         const data = await retrieveData()
         console.log(data.name)
     }
+    testnotificatios=async()=>{
+        await fetch('http://localhost:3000/User/notifications', {
+            method: 'POST',
+            headers: {
+                "Accept": 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: 's',
+              }),
+        })
+    }
     render(){
         
         return(
@@ -81,7 +93,9 @@ export default class creatAccountB extends React.Component{
                     <Text style={styles.errorMessage}>{this.state.errorPass}</Text>
                     <View style={styles.loginV}>
                     <TouchableOpacity style={styles.loginB}
-                     onPress={()=> this.savelogin(this.state.email, this.state.password)} 
+                     onPress={()=>{ //this.savelogin(this.state.email, this.state.password)
+                        this.savelogin(this.state.email,this.state.password)
+                     }} 
                     >
                         <Text style={styles.loginText}>تسجيل دخول</Text>
                         </TouchableOpacity>

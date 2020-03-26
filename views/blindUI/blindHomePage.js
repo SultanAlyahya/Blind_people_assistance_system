@@ -12,7 +12,7 @@ export default class blindHomePage extends React.Component{
     async componentDidMount() {
         try{
             if(!isModelReady){
-               await getReady()
+               //await getReady()
             }
             console.log(true)
         }catch(error){

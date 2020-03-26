@@ -16,6 +16,8 @@ export default class login extends React.Component{
         };
       }
 
+    
+
       //the function is async becuase in this function there will be a data the will get sometime to come like get data from server
     savelogin= async(email, password)=>{
         //ths fetch function is a way to get or send info to/from the server 
@@ -52,9 +54,11 @@ export default class login extends React.Component{
                     })
                 }
             
-        console.log('here',this.state.errorEmail, this.state.errorPass)
-        console.log(email, password)
-        const res = await fetch('http://localhost:3000/volunteer/Login', {
+        //console.log('here',this.state.errorEmail, this.state.errorPass)
+        //console.log(email, password)
+        //let token = await Notifications.getExpoPushTokenAsync();
+        try{
+        const res = await fetch('https://assistance-system-back-end.herokuapp.com/volunteer/Login', {
             method: 'POST',
             headers: {
                 "Accept": 'application/json',
@@ -85,6 +89,9 @@ export default class login extends React.Component{
                 rate:resJ.rate
             })
         }
+    }catch(error){
+        console.log(error)
+    }
         
     }
     
@@ -92,6 +99,8 @@ export default class login extends React.Component{
         const data = await retrieveData()
         console.log(data.name)
     }
+
+   
     render(){
         
         return(

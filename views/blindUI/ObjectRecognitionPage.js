@@ -15,7 +15,7 @@ import {classifyImage, isModelReady} from './ObjectRecognition'
 export  default class object  extends React.Component {
         state = {
                 isTfReady: false,
-                isModelReady: false,
+                isModelReady: isModelReady,
                 predictions: null,
                 image: {uri:this.props.navigation.state.params.imagePath},
                 updates:'',

@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground,TextInput} from 'react-native';
+import { Notifications } from 'expo';
+import * as Permissions from 'expo-permissions';
 import loginData from '../db/Userdb'
 
 export default class sginup extends React.Component{
@@ -17,6 +19,15 @@ export default class sginup extends React.Component{
             errorRePass:''
         }
     }
+
+    async componentDidMount() {
+        const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+        if (status !== 'granted') {
+            alert('No notification permissions!');
+            return;
+          }
+    }
+
    craeteUser = async(name,email,password,rePassword)=>{
         console.log(name,email, password)
         if(name ===''|| email ==='' ||password ===''||rePassword ===''){
@@ -53,6 +64,9 @@ export default class sginup extends React.Component{
                 errorPas:'',
                 errorName:'',
             })
+
+        let token = await Notifications.getExpoPushTokenAsync();
+        console.log(token)
         const res = await fetch('https://assistance-system-back-end.herokuapp.com/volunteer/Signup', {
             method: 'POST',
             headers: {
@@ -63,6 +77,7 @@ export default class sginup extends React.Component{
                 name:name,
                 email: email,
                 password: password,
+                notificationToken:token
               }),
         })
       
